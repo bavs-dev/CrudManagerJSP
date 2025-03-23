@@ -23,6 +23,7 @@ public class RolesDAOImpl implements RolesDAO {
 	private static final String UPDATE_ROL = "UPDATE roles SET nombre =?, verificador = ? WHERE id = ?";
 	private static final String DELETE_ROl = "DELETE FROM roles WHERE id = ?";
 	private static final String SELECT = "SELECT * FROM roles";
+	private static final String SELECTROLID = "SELECT * FROM roles WHERE id = ?";
 
 	/**
 	 * Metodo que consulta todos los roles de sus respectiva tabla lo retorna en
@@ -120,6 +121,38 @@ public class RolesDAOImpl implements RolesDAO {
 			e.printStackTrace();
 			logger.error("Error al eliminar el rol {} ", e.getMessage());
 		}
+	}
+
+	/**
+	 * Metodo que permite consultar el rol por su id 
+	 * retorna un objeto de tipo Rol que utilizaremos 
+	 * en el jsp
+	 */
+	@Override
+	public Rol getRolById(int id) {
+		try (Connection conn = ConexionDB.getConexionDB();
+				PreparedStatement stmt = conn.prepareStatement(SELECTROLID)) {
+
+
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				Rol rol = new Rol();
+				rol.setId(rs.getInt("id"));
+				rol.setNombre(rs.getString("nombre"));
+				rol.setVerificador(rs.getString("verificador"));
+				logger.info("El rol se encontro correctamente");
+				return rol;
+			}
+
+			logger.info("El rol se elimino correctamente. ");
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			logger.error("Error al eliminar el rol {} ", e.getMessage());
+		}
+		return null;
 	}
 
 }
