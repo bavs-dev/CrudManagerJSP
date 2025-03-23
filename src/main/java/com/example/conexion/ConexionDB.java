@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 // clase que realiza la conexion de la base de datos
 public class ConexionDB {
 
-
 	// paramtros de conexion de la base datos
 	private static final String URL = "jdbc:mysql://localhost:3306/CrudManagerJSPMySQL";
 	private static final String USUARIO = "root";
@@ -25,22 +24,16 @@ public class ConexionDB {
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			 // creacion del logger
+			// creacion del logger
 			logger.info("Conexión exitosa.");
 			return DriverManager.getConnection(URL, USUARIO, CONTRASENA);
 
-
 		} catch (ClassNotFoundException | SQLException e) {
-			 throw new RuntimeException("Error en la conexión con la base de datos");
-
+			throw new RuntimeException("Error en la conexión con la base de datos");
 
 		}
 
 	}
-
-
-
-
 
 //	/**
 //	 * metodo que sirve para cerrar la conexion

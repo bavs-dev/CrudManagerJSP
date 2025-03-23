@@ -17,10 +17,9 @@ public class RolesServlet extends HttpServlet {
 
 	private RolesDAO rolesDAO = new RolesDAOImpl();
 
-
 	/**
-	 * Metodo doGet que permite obtener los valores como id
-	 * esos valores los utilizaremos para mandar y utlizar en el jsp
+	 * Metodo doGet que permite obtener los valores como id esos valores los
+	 * utilizaremos para mandar y utlizar en el jsp
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,17 +43,17 @@ public class RolesServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Rol rol = rolesDAO.getRolById(id);
 			// Enviar el rol al JSP
-	        request.setAttribute("rol", rol);
-	        // es importante colcoar el forward ya que permite mandar los nuevos valores al
-	        // recargar la páguina nuevamente
-	        request.getRequestDispatcher("/views/app/Roles.jsp").forward(request, response);
+			request.setAttribute("rol", rol);
+			// es importante colcoar el forward ya que permite mandar los nuevos valores al
+			// recargar la páguina nuevamente
+			request.getRequestDispatcher("/views/app/Roles.jsp").forward(request, response);
 		}
 
 	}
 
 	/**
-	 * Metodo doPost permite enviar datos importantes para poder actualizar y insertar
-	 * segun sea el tipo de accion realiza la accion
+	 * Metodo doPost permite enviar datos importantes para poder actualizar y
+	 * insertar segun sea el tipo de accion realiza la accion
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -79,12 +78,11 @@ public class RolesServlet extends HttpServlet {
 
 		} else if ("actualizar".equals(accion)) {
 
-			//metodo en caso de que accede permite recuperar el id y actulizar el valor
+			// metodo en caso de que accede permite recuperar el id y actulizar el valor
 			int id = Integer.parseInt(request.getParameter("id"));
 
 			String nombre = request.getParameter("nombre");
 			String vericador = nombre.toUpperCase().replaceAll("\\s+", "");
-
 
 			Rol rol = new Rol();
 			rol.setId(id);

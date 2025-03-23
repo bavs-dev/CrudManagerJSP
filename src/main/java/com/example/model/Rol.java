@@ -4,13 +4,14 @@ public class Rol {
 
 	// creacion de los parametros de nuestra tabla
 	private int id;
-	private String nombre ;
+	private String nombre;
 	private String verificador;
 
-	//constructor
-	public Rol() {}
+	// constructor
+	public Rol() {
+	}
 
-	//constructor con parametros
+	// constructor con parametros
 	public Rol(int id, String nombre, String verificador) {
 		this.id = id;
 		this.nombre = nombre;
@@ -40,7 +41,5 @@ public class Rol {
 	public void setVerificador(String verificador) {
 		this.verificador = verificador;
 	}
-
-
 
 }

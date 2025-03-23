@@ -34,8 +34,7 @@ public class RolesDAOImpl implements RolesDAO {
 	@Override
 	public List<Rol> selectRoles() {
 		List<Rol> rol = new ArrayList<>();
-		try (Connection conn = ConexionDB.getConexionDB();
-				PreparedStatement stmt = conn.prepareStatement(SELECT)) {
+		try (Connection conn = ConexionDB.getConexionDB(); PreparedStatement stmt = conn.prepareStatement(SELECT)) {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -63,8 +62,7 @@ public class RolesDAOImpl implements RolesDAO {
 	 */
 	@Override
 	public void insertRol(Rol rol) {
-		try (Connection conn = ConexionDB.getConexionDB();
-				PreparedStatement stmt = conn.prepareStatement(INSERT_ROL)) {
+		try (Connection conn = ConexionDB.getConexionDB(); PreparedStatement stmt = conn.prepareStatement(INSERT_ROL)) {
 
 			stmt.setString(1, rol.getNombre());
 			stmt.setString(2, rol.getVerificador());
@@ -86,8 +84,7 @@ public class RolesDAOImpl implements RolesDAO {
 	 */
 	@Override
 	public void updateRol(Rol rol) {
-		try (Connection conn = ConexionDB.getConexionDB();
-				PreparedStatement stmt = conn.prepareStatement(UPDATE_ROL)) {
+		try (Connection conn = ConexionDB.getConexionDB(); PreparedStatement stmt = conn.prepareStatement(UPDATE_ROL)) {
 
 			stmt.setString(1, rol.getNombre());
 			stmt.setString(2, rol.getVerificador());
@@ -109,8 +106,7 @@ public class RolesDAOImpl implements RolesDAO {
 	 */
 	@Override
 	public void deleteRol(int id) {
-		try (Connection conn = ConexionDB.getConexionDB();
-				PreparedStatement stmt = conn.prepareStatement(DELETE_ROl)) {
+		try (Connection conn = ConexionDB.getConexionDB(); PreparedStatement stmt = conn.prepareStatement(DELETE_ROl)) {
 
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
@@ -124,19 +120,17 @@ public class RolesDAOImpl implements RolesDAO {
 	}
 
 	/**
-	 * Metodo que permite consultar el rol por su id
-	 * retorna un objeto de tipo Rol que utilizaremos
-	 * en el jsp
+	 * Metodo que permite consultar el rol por su id retorna un objeto de tipo Rol
+	 * que utilizaremos en el jsp
 	 */
 	@Override
 	public Rol getRolById(int id) {
 		try (Connection conn = ConexionDB.getConexionDB();
 				PreparedStatement stmt = conn.prepareStatement(SELECTROLID)) {
 
-
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				Rol rol = new Rol();
 				rol.setId(rs.getInt("id"));
 				rol.setNombre(rs.getString("nombre"));
