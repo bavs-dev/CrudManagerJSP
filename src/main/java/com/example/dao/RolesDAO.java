@@ -39,9 +39,9 @@ public interface RolesDAO {
 	List<Rol> selectRoles();
 
 	/**
-	 * Metodo que reliza una consulta con el id 
+	 * Metodo que reliza una consulta con el id
 	 * @param id -> id del Rol seleccionado
-	 * @return Rol -> objeto de tipo ROL 
+	 * @return Rol -> objeto de tipo ROL
 	 */
 	Rol getRolById(int id);
 

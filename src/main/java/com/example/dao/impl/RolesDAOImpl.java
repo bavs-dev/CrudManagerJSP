@@ -124,8 +124,8 @@ public class RolesDAOImpl implements RolesDAO {
 	}
 
 	/**
-	 * Metodo que permite consultar el rol por su id 
-	 * retorna un objeto de tipo Rol que utilizaremos 
+	 * Metodo que permite consultar el rol por su id
+	 * retorna un objeto de tipo Rol que utilizaremos
 	 * en el jsp
 	 */
 	@Override

@@ -46,7 +46,7 @@ public class RolesServlet extends HttpServlet {
 			// Enviar el rol al JSP
 	        request.setAttribute("rol", rol);
 	        // es importante colcoar el forward ya que permite mandar los nuevos valores al
-	        // recargar la páguina nuevamente 
+	        // recargar la páguina nuevamente
 	        request.getRequestDispatcher("/views/app/Roles.jsp").forward(request, response);
 		}
 
